@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mContext = this;
-        //标题集合设置
+        //标题集设置
         setTitleList();
         //找到总列表并给配个适配器和点击事件
         theAllListView = (ListView) findViewById(R.id.the_all_list);
