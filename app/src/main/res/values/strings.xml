@@ -1,3 +1,21 @@
 <resources>
+    <!-- 系统信息文字 -->
     <string name="app_name">Codes</string>
+
+    <!-- 按钮 -->
+    <string name="button_a">工作</string>
+    <string name="button_b">学习</string>
+    <string name="button_c">计    算</string>
+    <string name="button_d">生活</string>
+    <string name="button_e">加班</string>
+    <string name="button_f">睡觉</string>
+    <string name="button_g">开始</string>
+
+
+    <!-- 文本 -->
+    <string name="text_a">朗读状态实时显示</string>
+    <string name="text_b">请在这里输入需要朗读的文字</string>
+    <string name="text_c">语音合成设置</string>
+    <string name="text_d">请输入1-999的正整数</string>
+    <string name="text_e">文本e</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.wuzhong.codes;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -8,11 +9,17 @@ import android.widget.TextView;
 
 import java.util.List;
 
-class AllListAdapter extends BaseAdapter {
+/**
+ * 总Adapter
+ *
+ * @auther Wuzhong
+ * @date 2017-2-13
+ */
+public class AllListAdapter extends BaseAdapter {
     private List<String> titleList;
     private Context mContext;
 
-    AllListAdapter(Context context, List<String> array) {
+    public AllListAdapter(Context context, List<String> array) {
         mContext = context;
         titleList = array;
     }
@@ -45,6 +52,9 @@ class AllListAdapter extends BaseAdapter {
             texts = (TextView) view.findViewById(R.id.the_text_item);
             texts.setText(titleList.get(position));
         }
+        texts.setBackgroundColor(Color.BLACK);
+        texts.setTextColor(Color.WHITE);
+        texts.setTextSize(24f);
 
 
         return view;

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/camera_titlebar"></include>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/camera_swipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_bar"
+
+        android:background="@mipmap/keyboard_bg">
+
+        <RelativeLayout
+            android:id="@+id/crouton_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:id="@+id/relative_screen"
+                android:layout_width="match_parent"
+                android:paddingTop="10dp"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@mipmap/backimage" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="24dp"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="在线"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/camera_screen_play"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/camera_play_selector" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative_screen"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="58dp"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="聚龙摄像机"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+                <LinearLayout
+                    android:id="@+id/camera_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/camera_v_btn"
+                    android:orientation="vertical"
+                    android:paddingRight="20dp">
+
+                    <ImageButton
+                        android:id="@+id/camera_imgbtn_eye"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/camera_eye_selector" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:text="快照"
+                        android:textColor="@color/black"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/camera_play_back_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/camera_set_btn"
+                    android:orientation="vertical"
+                    android:paddingRight="20dp">
+
+                    <ImageButton
+                        android:id="@+id/camera_imgbtn_bac"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/camera_plb_selector" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:text="回看"
+                        android:textColor="@color/black"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/camera_v_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/camera_play_back_btn"
+                    android:orientation="vertical"
+                    android:paddingRight="20dp">
+
+                    <ImageButton
+                        android:id="@+id/camera_imgbtn_vic"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/camera_vic_selector" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:text="邀请"
+                        android:textColor="@color/black"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/camera_set_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:paddingRight="20dp">
+
+                    <ImageButton
+                        android:id="@+id/camera_imgbtn_set"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/camera_set_selector" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:text="设置"
+                        android:textColor="@color/black"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</RelativeLayout>

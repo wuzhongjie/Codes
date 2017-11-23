@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <com.wuzhong.codes.progressbar.round.CircleView
+            android:id="@+id/circle_progress_bar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:antiAlias="true"
+            app:arcWidth="@dimen/small"
+            app:bgArcColor="@color/colorAccent"
+            app:bgArcWidth="@dimen/small"
+            app:hint="截止当前已走"
+            app:hintSize="15sp"
+            app:maxValue="10000"
+            app:startAngle="135"
+            app:sweepAngle="270"
+            app:unit="步"
+            app:unitSize="15sp"
+            app:value="10000"
+            app:valueSize="25sp" />
+
+        <com.wuzhong.codes.progressbar.round.DialProgress
+            android:id="@+id/dial_progress_bar"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/medium"
+            app:animTime="1000"
+            app:arcColors="@array/gradient_arc_color"
+            app:arcWidth="@dimen/large"
+            app:dialIntervalDegree="3"
+            app:dialWidth="2dp"
+            app:hint="当前时速"
+            app:hintSize="@dimen/text_size_25"
+            app:maxValue="300"
+            app:startAngle="135"
+            app:sweepAngle="270"
+            app:unit="km/h"
+            app:unitSize="@dimen/text_size_25"
+            app:value="300"
+            app:valueSize="@dimen/text_size_35"/>
+
+        <com.wuzhong.codes.progressbar.round.WaveProgress
+            android:id="@+id/wave_progress_bar"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            app:darkWaveAnimTime="1000"
+            app:darkWaveColor="@color/dark"
+            app:lightWaveAnimTime="2000"
+            app:lightWaveColor="@color/light"
+            app:lightWaveDirect="R2L"
+            app:lockWave="false"
+            app:valueSize="@dimen/text_size_35"
+            app:waveHeight="30dp"
+            app:waveNum="1"
+            />
+
+        <SeekBar
+            android:id="@+id/pro_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</ScrollView>

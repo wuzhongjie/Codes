@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/camera_titlebar"></include>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/start_swipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_bar"
+        android:background="@mipmap/keyboard_bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/start_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:text="开启动态,不错过任何时刻"
+                android:textColor="@color/txt_title"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/start_b_text"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/start_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="摄像机为您免费记录7天的动态消息,您可以在这里回看过去7天的精彩时刻"
+                android:textColor="@color/txt_title"
+                android:lineSpacingExtra="10dp"
+                android:textSize="14sp" />
+
+
+            <ImageButton
+                android:id="@+id/start_btn"
+                android:layout_marginTop="100dp"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/start_b_text"
+                android:background="@drawable/camera_start_selector"
+                />
+
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

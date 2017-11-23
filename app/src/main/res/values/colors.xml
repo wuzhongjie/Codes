@@ -3,4 +3,39 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="button_orange">#FF9981</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue_b">#ADD8E6</color>
+    <color name="peach">#FFDAB9</color>
+    <color name="lightgray">#D3D3D3</color>
+
+    <color name="bg_window">#ffe5e5e5</color>
+    <color name="bg_page">#ffebebeb</color>
+    <color name="bg_tab_pressed">#6633b5e5</color>
+    <color name="bg_tab_pressed2">#ff3898ff</color> <!-- 蓝色 -->
+    <color name="red_b">#ff0000</color> <!-- 红色 -->
+
+    <color name="txt_title">#ff333333</color>
+    <color name="txt_small">#ff7a7a7a</color>
+    <color name="txt_big">#ff717171</color>
+    <color name="item_divider">#ffd7d7d7</color>
+    <color name="detail_screen_bg">#adadad</color>
+    <color name="progress">#0294f0</color>
+    <color name="menu_bg_normal">#f0f1f3</color>
+    <color name="menu_bg_press">#cecece</color>
+
+    <color name="dark">#803cbcb7</color>
+    <color name="light">#800de6e8</color>
+
+    <color name="green">#00FF00</color>
+    <color name="blue">#EE9A00</color>
+    <color name="red">#EE0000</color>
+
+    <integer-array name="gradient_arc_color">
+        <item>@color/green</item>
+        <item>@color/blue</item>
+        <item>@color/red</item>
+    </integer-array>
 </resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/camera_titlebar_back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:visibility="invisible"
+        android:background="@drawable/camera_bac_selector"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"
+        />
+
+    <TextView
+        android:id="@+id/camera_bar_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="标题栏"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:layout_centerInParent="true"
+        />
+
+    <ImageButton
+        android:id="@+id/camera_titlebar_add"
+        android:layout_width="20dp"
+        android:visibility="invisible"
+        android:layout_height="20dp"
+        android:background="@drawable/camera_btn_selector"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        />
+
+
+
+</RelativeLayout>

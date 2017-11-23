@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:id="@+id/read_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            ></LinearLayout>
+
+    </ScrollView>
+
+    <EditText
+        android:id="@+id/read_edit"
+        android:hint="@string/text_b"
+        android:textSize="24sp"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/read_pause"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:background="@drawable/read_selector_pause"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            tools:ignore="ButtonStyle,NestedWeights" />
+        <Button
+            android:id="@+id/read_play"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:background="@drawable/read_selector_play"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            tools:ignore="ButtonStyle" />
+        <Button
+            android:id="@+id/read_stop"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:background="@drawable/read_selector_stop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            tools:ignore="ButtonStyle" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

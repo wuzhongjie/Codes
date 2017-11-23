@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:id="@+id/dialog_btn_a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="顶部弹出"
+        />
+    <Button
+        android:id="@+id/dialog_btn_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="非顶部弹出"
+        />
+    <LinearLayout
+        android:id="@+id/dialog_main_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
