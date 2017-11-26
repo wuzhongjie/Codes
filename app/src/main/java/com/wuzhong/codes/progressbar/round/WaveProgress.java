@@ -297,12 +297,17 @@ public class WaveProgress extends View {
         return isR2L ? MiscUtil.reverse(points) : points;
     }
 
+    /*绘制*/
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //绘制圆形
         drawCircle(canvas);
+        //绘制浅色水波
         drawLightWave(canvas);
+        //绘制神色水波
         drawDarkWave(canvas);
+        //绘制进度条
         drawProgress(canvas);
     }
 
