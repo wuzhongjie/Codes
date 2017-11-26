@@ -103,7 +103,7 @@ public class WaveProgress extends View {
     //贝塞尔曲线点的总个数
     private int mAllPointCount;
     private int mHalfPointCount;
-
+    //动画和动画时间
     private ValueAnimator mProgressAnimator;
     private long mDarkWaveAnimTime;
     private ValueAnimator mDarkWaveAnimator;
@@ -125,6 +125,7 @@ public class WaveProgress extends View {
         initPath();
     }
 
+    /*初始化属性,从xml中读取属性*/
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.WaveProgress);
 
