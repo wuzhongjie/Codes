@@ -35,8 +35,9 @@ public class WaveProgress extends View {
 
     //浅色波浪方向
     private static final int L2R = 0;
+    //深色波浪方向
     private static final int R2L = 1;
-
+    //默认尺寸
     private int mDefaultSize;
     //圆心
     private Point mCenterPoint;
@@ -52,7 +53,6 @@ public class WaveProgress extends View {
     private boolean isR2L;
     //是否锁定波浪不随进度移动
     private boolean lockWave;
-
     //是否开启抗锯齿
     private boolean antiAlias;
     //最大值
@@ -61,17 +61,20 @@ public class WaveProgress extends View {
     private float mValue;
     //当前进度
     private float mPercent;
-
-    //绘制提示
+    //绘制提示信息,提示信息的画笔
     private TextPaint mHintPaint;
+    //提示信息的内容
     private CharSequence mHint;
+    //提示信息的颜色
     private int mHintColor;
+    //提示信息的字号
     private float mHintSize;
-
+    //比例的画笔
     private Paint mPercentPaint;
+    //当前值的大小
     private float mValueSize;
+    //当前值的颜色
     private int mValueColor;
-
     //圆环宽度
     private float mCircleWidth;
     //圆环
@@ -80,34 +83,39 @@ public class WaveProgress extends View {
     private int mCircleColor;
     //背景圆环颜色
     private int mBgCircleColor;
-
     //水波路径
+    //水波最小路径
     private Path mWaveLimitPath;
+    //水波路径
     private Path mWavePath;
     //水波高度
     private float mWaveHeight;
-    //水波数量
+    //圈内水波波峰数量
     private int mWaveNum;
-    //深色水波
+    //深色水波画笔
     private Paint mWavePaint;
     //深色水波颜色
     private int mDarkWaveColor;
     //浅色水波颜色
     private int mLightWaveColor;
-
     //深色水波贝塞尔曲线上的起始点、控制点
     private Point[] mDarkPoints;
     //浅色水波贝塞尔曲线上的起始点、控制点
     private Point[] mLightPoints;
-
     //贝塞尔曲线点的总个数
     private int mAllPointCount;
+    //贝塞尔曲线的中点
     private int mHalfPointCount;
+    //水波进度动画
     //动画和动画时间
     private ValueAnimator mProgressAnimator;
+    //动画时间
     private long mDarkWaveAnimTime;
+    //深色水波动画
     private ValueAnimator mDarkWaveAnimator;
+    //浅色水波动画时间
     private long mLightWaveAnimTime;
+    //浅色水波动画
     private ValueAnimator mLightWaveAnimator;
 
     public WaveProgress(Context context, AttributeSet attrs) {
@@ -116,19 +124,24 @@ public class WaveProgress extends View {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        //默认大小计算
         mDefaultSize = MiscUtil.dipToPx(context, ConstantUtil.DEFAULT_SIZE);
+        //初始化外框和中点
         mRectF = new RectF();
         mCenterPoint = new Point();
-
+        //初始化属性
         initAttrs(context, attrs);
+        //初始化画笔
         initPaint();
+        //初始化路径
         initPath();
     }
+
 
     /*初始化属性,从xml中读取属性*/
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.WaveProgress);
-
+        //从xml中获取所有属性的值.
         antiAlias = typedArray.getBoolean(R.styleable.WaveProgress_antiAlias, true);
         mDarkWaveAnimTime = typedArray.getInt(R.styleable.WaveProgress_darkWaveAnimTime, ConstantUtil.DEFAULT_ANIM_TIME);
         mLightWaveAnimTime = typedArray.getInt(R.styleable.WaveProgress_lightWaveAnimTime, ConstantUtil.DEFAULT_ANIM_TIME);
@@ -158,7 +171,9 @@ public class WaveProgress extends View {
         typedArray.recycle();
     }
 
+    /*初始化画笔*/
     private void initPaint() {
+        //文字画笔
         mHintPaint = new TextPaint();
         // 设置抗锯齿,会消耗较大资源，绘制图形速度会变慢。
         mHintPaint.setAntiAlias(antiAlias);
@@ -168,29 +183,34 @@ public class WaveProgress extends View {
         mHintPaint.setColor(mHintColor);
         // 从中间向两边绘制，不需要再次计算文字
         mHintPaint.setTextAlign(Paint.Align.CENTER);
-
+        //圆画笔
         mCirclePaint = new Paint();
+        //抗锯齿/宽度/样式/线冒样式
         mCirclePaint.setAntiAlias(antiAlias);
         mCirclePaint.setStrokeWidth(mCircleWidth);
         mCirclePaint.setStyle(Paint.Style.STROKE);
         mCirclePaint.setStrokeCap(Paint.Cap.ROUND);
-
+        //水波画笔
         mWavePaint = new Paint();
+        //抗锯齿/样式
         mWavePaint.setAntiAlias(antiAlias);
         mWavePaint.setStyle(Paint.Style.FILL);
-
+        //比例画笔
         mPercentPaint = new Paint();
+        //字体锯齿/动画锯齿/颜色/字体大小
         mPercentPaint.setTextAlign(Paint.Align.CENTER);
         mPercentPaint.setAntiAlias(antiAlias);
         mPercentPaint.setColor(mValueColor);
         mPercentPaint.setTextSize(mValueSize);
     }
 
+    //初始化路径
     private void initPath() {
         mWaveLimitPath = new Path();
         mWavePath = new Path();
     }
 
+    /* 测量方法 */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -198,16 +218,20 @@ public class WaveProgress extends View {
                 MiscUtil.measure(heightMeasureSpec, mDefaultSize));
     }
 
+    /*尺寸发生变化*/
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         Log.d(TAG, "onSizeChanged: w = " + w + "; h = " + h + "; oldw = " + oldw + "; oldh = " + oldh);
+        //直径最小值 = [屏幕宽-左右padding-两倍的圆环线圈宽度]&&[屏幕高-上下padding-两倍圆环宽度]  中的较小的一个
         int minSize = Math.min(getMeasuredWidth() - getPaddingLeft() - getPaddingRight() - 2 * (int) mCircleWidth,
                 getMeasuredHeight() - getPaddingTop() - getPaddingBottom() - 2 * (int) mCircleWidth);
+        //半径 = 直径最小值/2
         mRadius = minSize / 2;
+        //中点为父控件正中心
         mCenterPoint.x = getMeasuredWidth() / 2;
         mCenterPoint.y = getMeasuredHeight() / 2;
-        //绘制圆弧的边界
+        //绘制圆弧的边界,决定外接矩形的尺寸
         mRectF.left = mCenterPoint.x - mRadius - mCircleWidth / 2;
         mRectF.top = mCenterPoint.y - mRadius - mCircleWidth / 2;
         mRectF.right = mCenterPoint.x + mRadius + mCircleWidth / 2;
@@ -216,36 +240,51 @@ public class WaveProgress extends View {
                 + ";圆心坐标 = " + mCenterPoint.toString()
                 + ";圆半径 = " + mRadius
                 + ";圆的外接矩形 = " + mRectF.toString());
+        //初始化波浪点
         initWavePoints();
-        //开始动画
+        //设置当前值,开始动画
         setValue(mValue);
         startWaveAnimator();
     }
 
+    /*初始化波浪点*/
     private void initWavePoints() {
-        //当前波浪宽度
+        //当前波浪宽度 = 直径/波峰数量(波峰数量越多,相应的宽度应该越小)
         float waveWidth = (mRadius * 2) / mWaveNum;
+        //所有点数量 = 8*圈内波峰数量+1  (圈内波峰*2=全部波峰数量,每个水波循环有4个点,最后结尾有一个点)
+        //当波数:所有:半数 = [1:9:4][2:17:8][3:25:12]
         mAllPointCount = 8 * mWaveNum + 1;
+        //半数点数量 = 所有点/2
         mHalfPointCount = mAllPointCount / 2;
+        //深色/浅色波浪 = getPoint ,得到点的数组
         mDarkPoints = getPoint(false, waveWidth);
         mLightPoints = getPoint(isR2L, waveWidth);
     }
 
     /**
      * 从左往右或者从右往左获取贝塞尔点
-     *
-     * @return
      */
     private Point[] getPoint(boolean isR2L, float waveWidth) {
+        //创建点数组
         Point[] points = new Point[mAllPointCount];
-        //第1个点特殊处理，即数组的中点
+        //第1个点特殊处理，即数组的中点  圆心.x ± 半径,圆心.y   如果是从右往左运动,点在右边,反之在左边.
         points[mHalfPointCount] = new Point((int) (mCenterPoint.x + (isR2L ? mRadius : -mRadius)), mCenterPoint.y);
         //屏幕内的贝塞尔曲线点
+        //循环,半点往圈内的第一个点 ~ 最后的点,每次循环加4个点    + width
         for (int i = mHalfPointCount + 1; i < mAllPointCount; i += 4) {
-            float width = points[mHalfPointCount].x + waveWidth * (i / 4 - mWaveNum);
+            //偏移量的计算
+            /*i为中点在整个数组中的位置.因为数组从0开始计,所以points[mHalfPointCount]恰好是波线中央点.
+            * 当显示1个波峰的时候,i=5,2个波峰i=9....
+            * waveWidth为当前波浪宽度,整个后半部分为
+            * */
+            float width = points[mHalfPointCount].x+ waveWidth * (i / 4 - mWaveNum);
+            //X = [1/4个波线的宽度+偏移量]    Y = [中点y - 波峰高度].
             points[i] = new Point((int) (waveWidth / 4 + width), (int) (mCenterPoint.y - mWaveHeight));
+            //X = [1/2个波线的宽度+偏移量]    Y = [中点y]
             points[i + 1] = new Point((int) (waveWidth / 2 + width), mCenterPoint.y);
+            //X = [3/4个波线的宽度+偏移量]    Y = [中点y + 波峰高度].
             points[i + 2] = new Point((int) (waveWidth * 3 / 4 + width), (int) (mCenterPoint.y + mWaveHeight));
+            //X = [1个波线的宽度+偏移量]    Y = [中点y - 波峰高度].
             points[i + 3] = new Point((int) (waveWidth + width), mCenterPoint.y);
         }
         //屏幕外的贝塞尔曲线点
